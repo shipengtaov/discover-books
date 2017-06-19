@@ -31,11 +31,11 @@
 
 #### 以 'https://book.douban.com/subject/3112503/' 作为起点抓取的 100 本书：
 
-![Core Python Programming](imgs/Core Python Programming.png)
+![Core-Python-Programming](images/Core-Python-Programming.png)
 
 #### 以 'https://book.douban.com/subject/27025715/' 作为起点抓取的 200 本书：
 
-![Edge of Eternity](imgs/Edge of Eternity.png)
+![Edge-of-Eternity](images/Edge-of-Eternity.png)
 
 测试
 ----
