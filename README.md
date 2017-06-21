@@ -54,7 +54,10 @@
 **查看与某一本书有关联的书：**
 	
 	# 替换 book_id 为你想要查看的书
-	match p=(n:DOUBAN_BOOK {book_id: 3112503})-[:RELATE*]-() return p
+	match p=(n:DOUBAN_BOOK {book_id:3112503})-[:RELATE*]-() return p
+	
+	# 限制返回数量：
+	match p=(n:DOUBAN_BOOK {book_id:3112503})-[:RELATE*]-() return p limit 30
 
 **删除数据库中所有抓取的图书：**
 
