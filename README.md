@@ -25,6 +25,9 @@
 
 	$ python start_crawler.py -u 'https://book.douban.com/subject/3112503/' -C 100 -t 8
 
+	# windows 系统下
+	$ python start_crawler.py -u https://book.douban.com/subject/3112503/ -C 100 -t 8
+
 **打印帮助信息：**
 
 	$ python start_crawler.py -h
@@ -47,6 +50,11 @@
 
 一些 cypher 语句
 ----------------
+
+**查看与某一本书有关联的书：**
+	
+	# 替换 book_id 为你想要查看的书
+	match p=(n:DOUBAN_BOOK {book_id: 3112503})-[:RELATE*]-() return p
 
 **删除数据库中所有抓取的图书：**
 
