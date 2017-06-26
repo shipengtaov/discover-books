@@ -55,12 +55,16 @@
 	
 	# 替换 book_id 为你想要查看的书
 	match p=(n:DOUBAN_BOOK {book_id:3112503})-[:RELATE*]-() return p
-	
+
 	# 限制返回数量：
 	match p=(n:DOUBAN_BOOK {book_id:3112503})-[:RELATE*]-() return p limit 30
 
-**删除数据库中所有抓取的图书：**
+**删除数据库数据：**
 
+	# 删除与某一本书有关的所有数据（包括node和relation）
+	match p=(n:DOUBAN_BOOK {book_id:3112503})-[:RELATE*]-() delete p
+
+	# 删除数据库中所有抓取的图书
 	match (n:DOUBAN_BOOK) detach delete n
 
 

@@ -56,7 +56,10 @@ class Crawler(Thread):
                     continue
 
                 logger.debug('正在抓取 {}'.format(url))
-                response = requests.get(url, timeout=10)
+                headers = {
+                    'User-Agent': random.choice(config.USER_AGENTS),
+                }
+                response = requests.get(url, headers=headers, timeout=10)
                 assert response.ok, '{} status code error: {}'.format(url, response.status_code)
 
                 parse_book = utils.parse_book(response)
