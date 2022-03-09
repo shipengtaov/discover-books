@@ -37,7 +37,7 @@ def is_douban_book_url(url):
     """判断是否是豆瓣图书链接
     """
     match = douban_book_pattern.match(url)
-    return True if match else False
+    return bool(match)
 
 
 def get_book_id_from_url(url):
@@ -78,16 +78,19 @@ def _parse_book_info(html):
     doc = lxml.html.fromstring(html)
     text = doc.text_content()
     pattern = r'{}[:：](.*?){}'
-    result = dict()
-    for key, column in [
+    return {
+        key: re.search(
+            pattern.format(column, end_flag), text, re.I | re.DOTALL
+        )
+        .group(1)
+        .strip()
+        for key, column in [
             ('author', '作者'),
             ('press', '出版社'),
             ('publish_date', '出版年'),
-            ('price', '定价')]:
-        result[key] = re.search(pattern.format(column, end_flag),
-                                text,
-                                re.I | re.DOTALL).group(1).strip()
-    return result
+            ('price', '定价'),
+        ]
+    }
 
 
 def _parse_book_related(html):

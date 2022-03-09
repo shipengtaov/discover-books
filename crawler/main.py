@@ -145,7 +145,7 @@ def start_crawler(args):
         threads.append(thread)
     try:
         while True:
-            if all([not t.is_alive() for t in threads]):
+            if all(not t.is_alive() for t in threads):
                 break
             time.sleep(.1)
     except KeyboardInterrupt:
